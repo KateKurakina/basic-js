@@ -1,7 +1,25 @@
-const CustomError = require("../extensions/custom-error");
+module.exports = function repeater(str, options) {
+  str = String(str);
+  let res = '';
 
-module.exports = function repeater(/* str, options */) {
-  throw new CustomError('Not implemented');
-  // remove line with error and write your code here
+  if (options.hasOwnProperty('addition')) {
+    str += String(options.addition);
+  }
+
+  if (options.hasOwnProperty('additionRepeatTimes')) {
+    for (let i = 1; i < options.additionRepeatTimes; i++) {
+      str += (options.additionSeparator || '|') + options.addition;
+    }
+  }
+
+  if (options.hasOwnProperty('repeatTimes')) {
+    for (let i = 1; i < options.repeatTimes; i++) {
+      res += str + (options.separator || '+');
+    }
+    res += str;
+  } else {
+    res = str;
+  }
+  return res;
 };
   
