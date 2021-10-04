@@ -16,11 +16,11 @@ export default {
     }
   },
   removeLink(position) {
-    if (!(isNaN(position))) {
+    if (position > 0 && position < this.chain.length) {
       this.chain.splice(position - 1, 1);
       return this;
     } else {
-      this.chain.splice(0, this.getLength());
+      this.chain.length = 0;
       throw new Error("You can't remove incorrect link!");
     }
   },
